@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/touchControls.css">
+</head>
+<body>
+	<div id="touch-target-display" style="position: fixed; top: 10px; left: 10px; background: rgba(255,255,255,0.8); padding: 5px; border: 1px solid #ccc; z-index: 9999;">Waiting for touch...</div>
+	<script>
+		const script = document.createElement("script");
+		script.src = "/scripts/smcmobile-1.2.1.js"; // Replace with the correct relative path
+		script.async = true;
+		// Called when the script is loaded successfully.
+		script.onerror = (err) =>
+			console.error("Failed to load controls:", err);
+		document.addEventListener("DOMContentLoaded", (e) => {
+			document.body.appendChild(script);
+		});
+		(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
+		
+		document.addEventListener('touchstart', (event) => {
+			if (event.touches.length > 0) {
+				const touch = event.touches[0];
+				const element = document.elementFromPoint(touch.clientX, touch.clientY);
+				const displayName = element ? (element.id || element.tagName) : 'none';
+				document.getElementById('touch-target-display').textContent = `Touched: ${displayName}`;
+			}
+		});
+	</script>
+</body>
+</html>
