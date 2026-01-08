@@ -4,7 +4,7 @@ input[type="range"] {
 	-webkit-appearance: none;
 	appearance: none;
 	background: transparent;
-	box-shadow: 0 0 5px 2px rgba(173, 173, 173, 0.8);
+	box-shadow: 0 0 5px 2px rgba(140, 143, 244, 0.8);
 	border-radius: 100px;
 	width: 100%;
 }
@@ -17,7 +17,7 @@ input[type="range"]:focus {
 /***** Chrome, Safari, Opera and Edge Chromium styles *****/
 /* slider track */
 input[type="range"]::-webkit-slider-runnable-track {
-	background-color: rgba(52, 61, 61, 0.72);
+	background-color: rgba(45, 175, 236, 0.72);
 	border-radius: 0.5rem;
 	height: 1rem;
 	overflow: hidden;
@@ -30,7 +30,7 @@ input[type="range"]::-webkit-slider-thumb {
 	appearance: none;
 
 	/*custom styles*/
-	background-color: rgba(140, 160, 160, 0.88);
+	background-color: rgba(164, 250, 250, 0.88);
 	height: 1rem;
 	width: 2rem;
 	border-radius: 8px;
@@ -39,7 +39,7 @@ input[type="range"]::-webkit-slider-thumb {
 /******** Firefox styles ********/
 /* slider track */
 input[type="range"]::-moz-range-track {
-	background-color: rgba(52, 61, 61, 0.72);
+	background-color: rgba(45, 175, 236, 0.72);
 	border-radius: 0.5rem;
 	height: 1rem;
 	overflow: hidden;
@@ -53,7 +53,7 @@ input[type="range"]::-moz-range-thumb {
 	/*Removes default border-radius that FF applies*/
 
 	/*custom styles*/
-	background-color: rgba(140, 160, 160, 0.88);
+	background-color: rgba(164, 250, 250, 0.88);
 	height: 1rem;
 	width: 2rem;
 	border-radius: 8px;
@@ -61,19 +61,10 @@ input[type="range"]::-moz-range-thumb {
 
 @font-face {
 	font-family: NSMBDS;
-	src: url(/MarioVsLuigi-Mobile/data/super-mario-ds-original.ttf);
+	src: url(/data/super-mario-ds-original.ttf);
 }
 
 @font-face {
 	font-family: Tomorrow-Medium;
-	src: url(/MarioVsLuigi-Mobile/data/Tomorrow-Medium.ttf);
-}
-
-button {
-	background-color: rgba(52, 61, 61, 0.72);
-	border: 1px solid rgba(140, 140, 160, 0.88);
-	border-radius: 2px;
-	padding: 2px 4px 2px 4px;
-	font-family: NSMBDS;
-	color: rgb(173, 173, 173);
+	src: url(/data/Tomorrow-Medium.ttf);
 }

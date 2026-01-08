@@ -1,4 +1,4 @@
-const zipURL = "data/MarioVsLuigi-WebGL.zip";
+const zipURL = "/MarioVsLuigi-Mobile/data/MarioVsLuigi-WebGL.zip";
 const DB_PREFIX = "MarioVsLuigi-WebGL-Files:";
 const logElem = document.getElementById("log");
 
@@ -33,7 +33,7 @@ async function ensureServiceWorker() {
 	}
 
 	try {
-		const reg = await navigator.serviceWorker.register("/sw.js");
+		const reg = await navigator.serviceWorker.register("./sw.js", {scope: "./"});
 	} catch (err) {
 		log(err, "error");
 		throw err;
@@ -89,10 +89,20 @@ async function loadGame() {
 			overscroll-behavior: none;
 			touch-action: none;
 		}
+		@font-face {
+			font-family: NSMBDS;
+			src: url(/MarioVsLuigi-Mobile/data/super-mario-ds-original.ttf);
+		}
+
+		@font-face {
+			font-family: Tomorrow-Medium;
+			src: url(/MarioVsLuigi-Mobile/data/Tomorrow-Medium.ttf);
+		}
 	</style>
+	<link rel="stylesheet" href="/MarioVsLuigi-Mobile/css/touchControls.css">
 	<script>
 		const script = document.createElement("script");
-		script.src = "../scripts/smcmobile-1.2.1.js"; // Replace with the correct relative path
+		script.src = "/MarioVsLuigi-Mobile/scripts/smcmobile-1.2.1.js";
 		script.async = true;
 		// Called when the script is loaded successfully.
 		script.onerror = (err) =>
@@ -101,6 +111,7 @@ async function loadGame() {
 			document.body.appendChild(script);
 		});
 	</script>
+	<base href="./">
 	`);
 	log("Launching Unity build...", "log");
 	// Redirect browser to the Unity index inside the zip
@@ -121,7 +132,7 @@ async function start() {
 		if (!hasFiles) {
 			await downloadZip();
 		} else {
-			log("Cached files already exist", "log");
+			log("Cached files already exist", "warn");
 		}
 
 		await loadGame();

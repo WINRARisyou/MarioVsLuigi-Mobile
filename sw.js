@@ -1,7 +1,8 @@
-importScripts("lib/idb-keyval.js");
+importScripts(self.registration.scope + "lib/idb-keyval.js");
 
 const DB_PREFIX = "MarioVsLuigi-WebGL-Files:";
 const INJECTION_KEY = "customHTMLInject";
+const BASE_PATH = self.registration.scope.replace(location.origin, "").replace(/\/$/, "");
 
 async function getInjectionHTML() {
 	return (await idbKeyval.get(INJECTION_KEY)) || "";
@@ -20,9 +21,9 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
 	const url = new URL(event.request.url);
 
-	if (!url.pathname.includes("MarioVsLuigi-Mobile/MarioVsLuigi-WebGL")) return;
+	if (!url.pathname.startsWith(BASE_PATH + "/MarioVsLuigi-WebGL")) return;
 
-	const key = DB_PREFIX + url.pathname.replace(/^\//, "");
+	const key = DB_PREFIX + url.pathname.slice(BASE_PATH.length + 1);
 
 	event.respondWith((async () => {
 		const blob = await idbKeyval.get(key);
