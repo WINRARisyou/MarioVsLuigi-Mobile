@@ -1,4 +1,4 @@
-const zipURL = "/data/MarioVsLuigi-WebGL.zip";
+const zipURL = "../data/MarioVsLuigi-WebGL.zip";
 const DB_PREFIX = "MarioVsLuigi-WebGL-Files:";
 const logElem = document.getElementById("log");
 
@@ -92,7 +92,7 @@ async function loadGame() {
 	</style>
 	<script>
 		const script = document.createElement("script");
-		script.src = "/scripts/smcmobile-1.2.1.js"; // Replace with the correct relative path
+		script.src = "../scripts/smcmobile-1.2.1.js"; // Replace with the correct relative path
 		script.async = true;
 		// Called when the script is loaded successfully.
 		script.onerror = (err) =>
