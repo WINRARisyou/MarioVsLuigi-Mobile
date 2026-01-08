@@ -3,7 +3,7 @@ window.CONTROLS_VERSION = "1.2.1"
 if (window.debugmode !== true) window.debugmode = false;
 
 // draw from controller/ folder
-window.assetsURL = "controller";
+window.assetsURL = "/controller";
 
 // TouchControls class manages the mobile/touch gamepad UI and its interactions
 window.TouchControls = class TouchControls {
