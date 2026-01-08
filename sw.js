@@ -20,7 +20,7 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
 	const url = new URL(event.request.url);
 
-	if (!url.pathname.includes("MarioVsLuigi-WebGL")) return;
+	if (!url.pathname.includes("MarioVsLuigi-Mobile/MarioVsLuigi-WebGL")) return;
 
 	const key = DB_PREFIX + url.pathname.replace(/^\//, "");
 

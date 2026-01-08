@@ -1,4 +1,4 @@
-const zipURL = "../data/MarioVsLuigi-WebGL.zip";
+const zipURL = "data/MarioVsLuigi-WebGL.zip";
 const DB_PREFIX = "MarioVsLuigi-WebGL-Files:";
 const logElem = document.getElementById("log");
 
