@@ -3,7 +3,7 @@ window.CONTROLS_VERSION = "1.2.1"
 if (window.debugmode !== true) window.debugmode = false;
 
 // draw from controller/ folder
-window.assetsURL = "/MarioVsLuigi-Mobile/controller";
+window.assetsURL = "controller";
 
 // TouchControls class manages the mobile/touch gamepad UI and its interactions
 window.TouchControls = class TouchControls {
@@ -932,7 +932,7 @@ window.SettingsMenu = class SettingsMenu {
 			this.settingsModalElem.style.transition = "opacity 0.3s";
 			this.settingsModalElem.style.paddingBottom = "0px"
 			this.settingsModalElem.style.lineHeight = "24px";
-			this.settingsModalElem.style.color = "rgb(173, 173, 173)";
+			this.settingsModalElem.style.color = "rgb(200, 200, 200)";
 			this.settingsModalElem.style.fontFamily = "NSMBDS, Tomorrow-Medium"
 			document.body.append(this.settingsModalElem);
 			//this.settingsModalElem.style.paddingRight = "0px"

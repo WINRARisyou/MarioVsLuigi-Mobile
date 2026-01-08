@@ -1,7 +1,7 @@
 {
 	"name": "NSMB-MarioVsLuigi",
 	"short_name": "NSMB-MarioVsLuigi",
-	"id": "com.infenek.nsmbmvl",
+	"id": "com.infenek.nsmb-mvl",
 	"display": "fullscreen",
 	"display_override": ["window-controls-overlay"],
 	"background_color": "#ffffff",

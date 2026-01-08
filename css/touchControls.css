@@ -61,12 +61,12 @@ input[type="range"]::-moz-range-thumb {
 
 @font-face {
 	font-family: NSMBDS;
-	src: url(/MarioVsLuigi-Mobile/data/super-mario-ds-original.ttf);
+	src: url(/data/super-mario-ds-original.ttf);
 }
 
 @font-face {
 	font-family: Tomorrow-Medium;
-	src: url(/MarioVsLuigi-Mobile/data/Tomorrow-Medium.ttf);
+	src: url(/data/Tomorrow-Medium.ttf);
 }
 
 button {

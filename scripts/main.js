@@ -1,4 +1,4 @@
-const zipURL = "/MarioVsLuigi-Mobile/data/MarioVsLuigi-WebGL.zip";
+const zipURL = "data/MarioVsLuigi-WebGL.zip";
 const DB_PREFIX = "MarioVsLuigi-WebGL-Files:";
 const logElem = document.getElementById("log");
 
@@ -91,18 +91,18 @@ async function loadGame() {
 		}
 		@font-face {
 			font-family: NSMBDS;
-			src: url(/MarioVsLuigi-Mobile/data/super-mario-ds-original.ttf);
+			src: url(/data/super-mario-ds-original.ttf);
 		}
 
 		@font-face {
 			font-family: Tomorrow-Medium;
-			src: url(/MarioVsLuigi-Mobile/data/Tomorrow-Medium.ttf);
+			src: url(/data/Tomorrow-Medium.ttf);
 		}
 	</style>
-	<link rel="stylesheet" href="/MarioVsLuigi-Mobile/css/touchControls.css">
+	<link rel="stylesheet" href="/css/touchControls.css">
 	<script>
 		const script = document.createElement("script");
-		script.src = "/MarioVsLuigi-Mobile/scripts/smcmobile-1.2.1.js";
+		script.src = "/scripts/smcmobile-1.2.1.js";
 		script.async = true;
 		// Called when the script is loaded successfully.
 		script.onerror = (err) =>
@@ -140,4 +140,3 @@ async function start() {
 		log(err, "error");
 	}
 };
-
