@@ -7,17 +7,21 @@
 	<link rel="stylesheet" href="css/touchControls.css">
 </head>
 <body>
-	<div id="touch-target-display" style="position: fixed; top: 10px; left: 10px; background: rgba(255,255,255,0.8); padding: 5px; border: 1px solid #ccc; z-index: 9999;">Waiting for touch...</div>
+	<div id="touch-target-display" style="position: fixed; top: 80px; left: 10px; background: rgba(255,255,255,0.8); padding: 5px; border: 1px solid #ccc; z-index: 9999;">Waiting for touch...</div>
 	<script>
 		const script = document.createElement("script");
-		script.src = "/MarioVsLuigi-Mobile/scripts/smcmobile-1.2.1.js"; // Replace with the correct relative path
+		script.src = "/MarioVsLuigi-Mobile/scripts/webcontrols.js";
 		script.async = true;
+		
 		// Called when the script is loaded successfully.
-		script.onerror = (err) =>
+		script.onerror = (err) => {
 			console.error("Failed to load controls:", err);
+		}
+
 		document.addEventListener("DOMContentLoaded", (e) => {
 			document.body.appendChild(script);
 		});
+		
 		(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
 		
 		document.addEventListener('touchstart', (event) => {
@@ -28,6 +32,10 @@
 				document.getElementById('touch-target-display').textContent = `Touched: ${displayName}`;
 			}
 		});
+
+		document.addEventListener("controlsInitialized", (e) => {
+			resetWithDebug();
+		})
 	</script>
 </body>
 </html>

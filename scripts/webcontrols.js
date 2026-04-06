@@ -50,12 +50,12 @@ window.TouchControls = class TouchControls {
 			},
 			actionButtons: {
 				position: { bottom: 60, right: 40 },
-				size: { width: 165, height: 130 },
+				size: { width: 165, height: 145 },
 				buttons: [
 					{ id: "jump", label: "Jump", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "B-active.png", inactive: "B-inactive.png", x: 0, y: 70, width: 60, height: 60, key: "z", keyCode: 90 },
-					{ id: "run", label: "Run", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "Y-active.png", inactive: "Y-inactive.png", x: 105, y: 0, width: 60, height: 60, key: "x", keyCode: 88 },
+					{ id: "run", label: "Run", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "Y-active.png", inactive: "Y-inactive.png", x: 105, y: 15, width: 60, height: 60, key: "x", keyCode: 88 },
 					//{ id: "spinjump", label: "Spin", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "A-active.png", inactive: "A-inactive.png", x: 140, y: 70, width: 60, height: 60, key: "c", keyCode: 67 },
-					{ id: "usepowerup", label: "Use Powerup", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "X-active.png", inactive: "X-inactive.png", x: 70, y: 70, width: 60, height: 60, key: "c", keyCode: 67 },
+					{ id: "usepowerup", label: "Use Powerup", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "X-active.png", inactive: "X-inactive.png", x: 70, y: 85, width: 60, height: 60, key: "c", keyCode: 67 },
 					{ id: "togglerun", label: "Toggle Run", border: false, color1: "rgba(255, 255, 255, 0)", color2: "rgba(255, 255, 0, 0)", active: "autorun-active.png", inactive: "autorun-inactive.png", x: 35, y: 0, width: 60, height: 60, key: "x", keyCode: 88, isToggle: true }
 				]
 			}
@@ -94,6 +94,12 @@ window.TouchControls = class TouchControls {
 		if (window.debugmode) {
 			this.setupDebugInfo();
 		}
+
+		const controlsInitializedEvent = new CustomEvent("controlsInitialized", {
+			detail: ''
+		});
+
+		document.dispatchEvent(controlsInitializedEvent);
 	}
 
 	
@@ -991,7 +997,6 @@ window.SettingsMenu = class SettingsMenu {
 		}));
 
 		this.settings = JSON.parse(localStorage.getItem("winrarisyou.TouchControlsSettings")) || {};
-		console.log(this.settings)
 		this.applySavedPositions();
 	}
 
