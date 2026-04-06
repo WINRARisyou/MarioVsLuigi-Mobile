@@ -102,7 +102,7 @@ async function loadGame() {
 	<link rel="stylesheet" href="/css/touchControls.css">
 	<script>
 		const script = document.createElement("script");
-		script.src = "/scripts/smcmobile-1.2.1.js";
+		script.src = "/scripts/webcontrols.js";
 		script.async = true;
 		// Called when the script is loaded successfully.
 		script.onerror = (err) =>
@@ -132,7 +132,7 @@ async function start() {
 		if (!hasFiles) {
 			await downloadZip();
 		} else {
-			log("Cached files already exist", "warn");
+			log("Cached files already exist, using those instead", "log");
 		}
 
 		await loadGame();

@@ -32,7 +32,12 @@
 	<h1>Unity WebGL Loader</h1>
 	<span id="log">
 	</span>
-	<button onclick="start()">Start</button>
+	<!-- <button onclick="start()">Start</button> -->
+	 <script>
+		document.addEventListener("DOMContentLoaded", (e) => {
+			start();
+		})
+	</script>
 	<script src="lib/jszip.min.js"></script>
 	<script src="lib/idb-keyval.js"></script>
 	<script src="scripts/main.js"></script>
