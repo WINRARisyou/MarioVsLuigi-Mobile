@@ -1,5 +1,7 @@
 const zipURL = "data/MarioVsLuigi-WebGL.zip";
 const DB_PREFIX = "MarioVsLuigi-WebGL-Files:";
+const GAME_VERSION_URL = "data/version.json";
+const VERSION_KEY = "MarioVsLuigi-Version";
 const logElem = document.getElementById("log");
 
 function log(msg, type) {
@@ -33,7 +35,7 @@ async function ensureServiceWorker() {
 	}
 
 	try {
-		const reg = await navigator.serviceWorker.register("./sw.js", {scope: "./"});
+		const reg = await navigator.serviceWorker.register("./sw.js", {scope: "./", updateViaCache: "none"});
 	} catch (err) {
 		log(err, "error");
 		throw err;
@@ -46,6 +48,29 @@ async function setInjection(html) {
 	await idbKeyval.set("customHTMLInject", html);
 	log("Updated injected HTML", "log")
 	console.log("Updated injected HTML");
+}
+
+async function getLatestVersion() {
+	const res = await fetch(GAME_VERSION_URL + "?t=" + Date.now(), {
+		cache: "no-store"
+	});
+
+	if (!res.ok) {
+		throw new Error("Failed to fetch version");
+	}
+
+	const data = await res.json();
+	return data.version;
+}
+
+async function clearGameFiles() {
+	const keys = await idbKeyval.keys();
+
+	for (const key of keys) {
+		if (key.startsWith(DB_PREFIX)) {
+			await idbKeyval.del(key);
+		}
+	}
 }
 
 async function downloadZip() {
@@ -125,14 +150,23 @@ async function start() {
 	try {
 		await ensureServiceWorker();
 
-		log("Checking cache...", "log");
-		const keys = await idbKeyval.keys();
-		const hasFiles = keys.some(k => k.startsWith(DB_PREFIX));
+		const latestVersion = await getLatestVersion();
+		const currentVersion = await idbKeyval.get(VERSION_KEY);
 
-		if (!hasFiles) {
+		log("Installed version: " + currentVersion, "log");
+		
+		if (currentVersion !== latestVersion) {
+			log("Latest version: " + latestVersion, "log");
+			log("New version detected. Updating files...", "log");
+
+			await clearGameFiles();
 			await downloadZip();
+
+			await idbKeyval.set(VERSION_KEY, latestVersion);
+
+			log("Update complete", "log");
 		} else {
-			log("Cached files already exist, using those instead", "log");
+			log("Game is up to date", "log");
 		}
 
 		await loadGame();
