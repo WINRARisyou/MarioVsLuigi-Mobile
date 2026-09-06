@@ -1,6 +1,6 @@
 {
 	"name": "NSMB-MarioVsLuigi",
-	"short_name": "NSMB-MarioVsLuigi",
+	"short_name": "NSMB-MvLO",
 	"id": "com.infenek.nsmb-mvl",
 	"display": "fullscreen",
 	"display_override": ["window-controls-overlay"],
@@ -9,7 +9,7 @@
 	"start_url": "./",
 	"scope": "./",
 	"orientation": "landscape",
-	"description": "A Unity-standalone 2-10 player remake of the Mario vs. Luigi gamemode from the New Super Mario Bros DS download game.",
+	"description": "A Unity-standalone 2-10 player remake of the Mario vs. Luigi gamemode from New Super Mario Bros DS.",
 	"icons": [
 		{
 			"src": "icons/favicon.ico",
